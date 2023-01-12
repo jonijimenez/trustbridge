@@ -37,7 +37,7 @@ public class OrderService {
 //    }
 
     public Page<Order> findOrders(int page, int count) {
-        Pageable pagedElems = PageRequest.of(page, count);
+        Pageable pagedElems = PageRequest.of(page, count, Sort.by("tourist.touristEmail").ascending());
         return repository.findAll(pagedElems);
     }
 
