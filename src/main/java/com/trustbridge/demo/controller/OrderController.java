@@ -29,20 +29,20 @@ public class OrderController {
         return service.findOrders(Integer.parseInt(page) - 1, 10);
     }
 
-//    @GetMapping("/order/{id}")
-//    Order findById(@PathVariable Long id) {
-//        return service.findOrderById(id);
-//    }
+    @GetMapping("/order/{id}")
+    Order findById(@PathVariable Long id) {
+        return service.findOrderById(id);
+    }
 
     @PostMapping("/order")
     Order newOrder(@RequestBody Order newOrder) {
         return service.createOrder(newOrder);
     }
 
-//    @PatchMapping("/order/{id}")
-//    Order patchOrder(@RequestBody Order newOrder, @PathVariable Long id) {
-//        return service.patchOrder(newOrder, id);
-//    }
+    @PatchMapping("/order/{id}")
+    Order patchOrder(@RequestBody Order newOrder, @PathVariable Long id) {
+        return service.patchOrder(newOrder, id);
+    }
 
     @DeleteMapping("/order/{id}")
     void deleteOrder(@PathVariable Long id) {
