@@ -24,12 +24,8 @@ public class TouristController {
     @Autowired
     TouristService service;
 
-    TouristController(TouristRepository repository) {
-        this.repository = repository;
-    }
-
     @GetMapping("/tourist")
-    Page<Tourist> all(@RequestParam(name = "page", defaultValue = "0") String page) {
+    Page<Tourist> all(@RequestParam(name = "page", defaultValue = "1") String page) {
         return service.findTourists(Integer.parseInt(page) - 1, 10);
     }
 
@@ -40,20 +36,16 @@ public class TouristController {
 
     @PostMapping("/tourist")
     Tourist newTourist(@RequestBody Tourist newTourist) {
-        return repository.save(newTourist);
+        return service.createTourist(newTourist);
     }
 
     @PatchMapping("/tourist/{id}")
     Tourist patchTourist(@RequestBody Tourist newTourist, @PathVariable Long id) {
         return service.patchTourist(newTourist, id);
-
     }
 
     @DeleteMapping("/tourist/{id}")
     void deleteTourist(@PathVariable Long id) {
-        repository.deleteById(id);
+        service.deleteTourist(id);
     }
-
-
-
 }

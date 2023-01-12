@@ -45,4 +45,11 @@ public class TouristService {
         return repository.findById(id).orElseThrow(() -> new TouristNotFoundException(id));
     }
 
+    public Tourist createTourist(Tourist newTourist) {
+        return repository.save(newTourist);
+    }
+
+    public void deleteTourist(Long id) {
+        repository.deleteById(id);
+    }
 }
